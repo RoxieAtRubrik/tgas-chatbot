@@ -10,9 +10,12 @@ import os
 import ssl
 import urllib2
 import urllib
+import base64
 
 CLUSTER_IP = os.environ['CLUSTER_IP']
-AUTH_TOKEN = os.environ['AUTH_TOKEN']
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
+AUTH_TOKEN = base64.b64encode('%s:%s' % (USERNAME, PASSWORD))
 
 ''' Sample Utterances
 Open support tunnel
@@ -44,7 +47,7 @@ def lambda_handler(event, context):
 
     # Get node ID of one of the nodes in the cluster
     req = urllib2.Request(ENDPOINT_NODE.format(CLUSTER_IP), None)
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -68,7 +71,7 @@ def lambda_handler(event, context):
         print data
         req = urllib2.Request(
             ENDPOINT_TUNNEL.format(CLUSTER_IP, first_node_id), data)
-        req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+        req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
         req.get_method = lambda: 'PATCH'
         handler = urllib2.HTTPSHandler(context=ssl_context)
         opener = urllib2.build_opener(handler)

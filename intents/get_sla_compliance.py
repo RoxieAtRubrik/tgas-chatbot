@@ -4,9 +4,12 @@ import math
 import os
 import ssl
 import urllib2
+import base64
 
 CLUSTER_IP = os.environ['CLUSTER_IP']
-AUTH_TOKEN = os.environ['AUTH_TOKEN']
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
+AUTH_TOKEN = base64.b64encode('%s:%s' % (USERNAME, PASSWORD))
 
 ''' Sample Utterances
 How are my SLAs doing
@@ -44,7 +47,7 @@ def lambda_handler(event, context):
 
     # Get CustomReport ID
     req = urllib2.Request(ENDPOINT_SLA_COMP_SUMMARY.format(CLUSTER_IP), None)
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -68,7 +71,7 @@ def lambda_handler(event, context):
     req = urllib2.Request(
         ENDPOINT_SLA_COMP_CHART.format(CLUSTER_IP, report_id), None
     )
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
 
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)

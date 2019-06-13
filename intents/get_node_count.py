@@ -3,9 +3,12 @@ import json
 import os
 import ssl
 import urllib2
+import base64
 
 CLUSTER_IP = os.environ['CLUSTER_IP']
-AUTH_TOKEN = os.environ['AUTH_TOKEN']
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
+AUTH_TOKEN = base64.b64encode('%s:%s' % (USERNAME, PASSWORD))
 
 ''' Sample Utterances
 What is the node count
@@ -36,7 +39,7 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     req = urllib2.Request(ENDPOINT_CLUSTER_STATUS.format(CLUSTER_IP), None)
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
