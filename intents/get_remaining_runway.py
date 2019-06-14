@@ -3,9 +3,12 @@ import json
 import os
 import ssl
 import urllib2
+import base64
 
 CLUSTER_IP = os.environ['CLUSTER_IP']
-AUTH_TOKEN = os.environ['AUTH_TOKEN']
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
+AUTH_TOKEN = base64.b64encode('%s:%s' % (USERNAME, PASSWORD))
 
 ''' Sample Utterances
 How much runway is left
@@ -57,7 +60,7 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     req = urllib2.Request(ENDPOINT_RUNWAY.format(CLUSTER_IP), None)
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Basic %s' % AUTH_TOKEN)
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -66,9 +69,7 @@ def lambda_handler(event, context):
     {u'days': 1314}
     """
     output = (
-        'Your cluster has storage runway of %s.'
-        ' Consider increasing cluster size or reducing local retention period'
-        ' to increase the runway left.' %
+        'Your cluster has storage runway of %s.' %
         human_readable_days(resp['days'])
     )
 
