@@ -10,6 +10,8 @@ Open up a web browser and go to [http://bit.ly/tgas-syd](http://bit.ly/tgas-syd)
 
 For example, if you are in group 4 then your username is group4 and the password is `Rubrik123!`
 
+![login screen](/docs/images/login.jpg)
+
 # AWS Lambda
 
 AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume - there is no charge when your code is not running. With AWS Lambda, you can run code for virtually any type of application or backend service - all with zero administration. All you need to do is supply your code in one of the languages that AWS Lambda supports (currently Node.js, Java, C#, Go and Python).
