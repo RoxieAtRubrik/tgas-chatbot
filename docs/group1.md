@@ -16,7 +16,7 @@ For this exercise, we're going to give our chatbot the power to get status on a 
 
 Start by navigating to the AWS Lambda service and clicking the **Create Function** button and choosing the Author From Scratch option.
 
-*   Name: `get_cluster_status`
+*   Name: `get_archived_amount`
 *   Runtime: Python 2.7
 *   Role: Create a new role from one or more templates
 *   Role Name: `roxie_lambda`
@@ -24,7 +24,7 @@ Start by navigating to the AWS Lambda service and clicking the **Create Function
 
 Click on the **Create Function** button at the bottom right corner to proceed. The creation process may take a little while to complete.
 
-Once finished, you will be taken to the `get_cluster_status` function page. There's a lot of menu items on this page - don't be alarmed! We're going to come back to this page in a moment.
+Once finished, you will be taken to the `get_archived_amount` function page. There's a lot of menu items on this page - don't be alarmed! We're going to come back to this page in a moment.
 
 ## Function Configuration
 
@@ -36,11 +36,11 @@ There are only three sections to edit in the Lambda function page:
 
 ### Function Code
 
-For this guide, we're going to use the contents of the `get_cluster_status.py` file found in the repository on GitHub. This is a very safe command that only retrieves the status of the nodes in your cluster. It's a good use case for your first time using Roxie.
+For this guide, we're going to use the contents of the `get_archived_amount.py` file found in the repository on GitHub. This is a very safe command that only retrieves the status of the nodes in your cluster. It's a good use case for your first time using Roxie.
 
-Locate the Function Code window and delete any code that already exists in the lambda_function window. Then, paste the contents of the `get_cluster_status.py` file into the Function Code window. The resulting output should look like the image below:
+Locate the Function Code window and delete any code that already exists in the lambda_function window. Then, paste the contents of the `get_archived_amount.py` file into the Function Code window. The resulting output should look like the image below:
 
-![Function Code for get_cluster_status](/docs/images/get-cluster-status-function-code.jpg)
+![Function Code for get_archived_amount](/docs/images/get-cluster-status-function-code.jpg)
 
 You can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 
@@ -53,7 +53,7 @@ For this step, it's important to add two environment variables: `CLUSTER_IP` and
 1.  `CLUSTER_IP`: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
 1.  `AUTH_TOKEN`: Enter the token created in the Generate a Rubrik API Token section.
 
-![Environmental Variables for get_cluster_status](/docs/images/environmental-variables.jpg)
+![Environmental Variables for get_archived_amount](/docs/images/environmental-variables.jpg)
 
 With those values updated, you can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 
@@ -74,7 +74,7 @@ Note: Why did we use the Hello World test? Because it doesn't matter! The functi
 
 The top area of the window will have a new area generated that contains the execution results of your test. If all goes well, this area will change to a light green color and state a result of succeeded. You can expand the details section to see the results in JSON format. In this example, had Roxie been asked to get cluster status by a user, she would have responded with "Your cluster is doing awesome."
 
-![Test Content for get_cluster_status](/docs/images/get-cluster-status-test-content.jpg)
+![Test Content for get_archived_amount](/docs/images/get-cluster-status-test-content.jpg)
 
 # AWS Lex
 
@@ -112,7 +112,7 @@ You now have your first intent. Let's dive deeper into the configuration areas o
 
 A sample utterance is the words or phrases that Roxie will listen for when determining what to do. Since this guide is all about getting cluster status, it would make sense to pick 3-5 of the most common ways that question can be asked and use them as sample utterances.
 
-We'll pick several phrases from the `get_cluster_status.py` example and enter them below:
+We'll pick several phrases from the `get_archived_amount.py` example and enter them below:
 
 1.  Status of my cluster
 1.  Is the cluster doing okay
@@ -128,7 +128,7 @@ If the spoken command matches one of the sample utterances, the intent will be c
 
 The business logic required to fulfill the user's intent is called a fulfillment. Essentially, if the chatbot hears the phrase "What is the status of the cluster", it then needs to know how to respond. We're going to use the Lambda function created earlier to programmatically reach out to Rubrik cluster's API and retrieve information needed to respond.
 
-Navigate to the fulfillment section of the intent, choose the **AWS Lambda function** radio button, and then use the drop down menu to pick the `get_cluster_status` function with the version default of Latest.
+Navigate to the fulfillment section of the intent, choose the **AWS Lambda function** radio button, and then use the drop down menu to pick the `get_archived_amount` function with the version default of Latest.
 
 ```
 Note: You will most likely see a prompt stating "You are about to give Amazon Lex permission to invoke your Lambda Function." Click on the OK button to continue.
@@ -169,6 +169,6 @@ Roxie will interpret the audio input and try to match it against an utterance co
 *   Intent-Name: This should match the intent based on the sample utterances provided int the intent. In this case, you should see the value of `cluster_status`.
 *   Dialog-State: Fulfilled
 *   Input-Transcript: The words you spoke into the microphone.
-*   Message: The response from Roxie, as generated by the Lambda function `get_cluster_status`.
+*   Message: The response from Roxie, as generated by the Lambda function `get_archived_amount`.
 
 Feel free to experiment with different inputs to tweak your sample utterances and add any that you think are missing.
