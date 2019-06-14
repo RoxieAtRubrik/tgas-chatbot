@@ -22,3 +22,5 @@ You're going to set up two cloud services: AWS Lex for the bot itself, and AWS L
 3. Grab Rebecca or Chris if you get stuck or have any questions.
 
 **Have fun!**
+
+![WOOO!](/docs/images/woo.gif)
