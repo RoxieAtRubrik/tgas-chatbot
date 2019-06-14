@@ -48,7 +48,7 @@ You can now click the **Save** button in the upper right corner of the window to
 
 Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code.
 
-For this step, it's important to add two environment variables: `CLUSTER_IP` and `AUTH_TOKEN`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
+For this step, it's important to add three environment variables: `CLUSTER_IP`, `USERNAME`, and `PASSWORD`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
 
 1.  `CLUSTER_IP`: 54.215.205.88
 1.  `PASSWORD`: Rubrik123!!
