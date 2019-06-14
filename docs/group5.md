@@ -24,7 +24,7 @@ Start by navigating to the AWS Lambda service and clicking the **Create Function
 
 Click on the **Create Function** button at the bottom right corner to proceed. The creation process may take a little while to complete.
 
-Once finished, you will be taken to the `get_node_count` function page. There's a lot of menu items on th is page - don't be alarmed! We're going to come back to this page in a moment.
+Once finished, you will be taken to the `get_node_count` function page. There's a lot of menu items on this page - don't be alarmed! We're going to come back to this page in a moment.
 
 ## Function Configuration
 
