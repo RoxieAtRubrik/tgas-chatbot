@@ -24,21 +24,21 @@ Start by navigating to the AWS Lambda service and clicking the **Create Function
 
 Click on the **Create Function** button at the bottom right corner to proceed. The creation process may take a little while to complete.
 
-Once finished, you will be taken to the `get_archived_amount` function page. There's a lot of menu items on this page - don't be alarmed! We're going to come back to this page in a moment.
+Once finished, you will be taken to the `get_archived_amount` function page. There's a lot of menu items on th is page - don't be alarmed! We're going to come back to this page in a moment.
 
 ## Function Configuration
 
 There are only three sections to edit in the Lambda function page:
 
 1.  [Function Code](#function-code): This is where the Python code for getting cluster status is loaded.
-1.  [Environmental Variables](#environmental-variables): This is where the connection information for your Rubrik cluster is stored.
+1.  [Environmental Variables](#environmental-variables): This is where the connection information for the backend Rubrik cluster is stored.
 1.  [Network](#network): This is where the VPC network is selected.
 
 ### Function Code
 
-For this guide, we're going to use the contents of the `get_archived_amount.py` file found in the repository on GitHub. This is a very safe command that only retrieves the status of the nodes in your cluster. It's a good use case for your first time using Roxie.
+For this guide, we're going to use the contents of the `get_archived_amount.py` file found in the repository on GitHub. Open the [`get_archived_amount.py` file](/intents/get_archived_amount.py) and copy the code.
 
-Locate the Function Code window and delete any code that already exists in the lambda_function window. Then, paste the contents of the `get_archived_amount.py` file into the Function Code window. The resulting output should look like the image below:
+Go back to AWS and locate the Function Code window and delete any code that already exists in the lambda_function window. Then, paste the contents of the `get_archived_amount.py` file into the Function Code window. The resulting output should look like the image below:
 
 ![Function Code for get_archived_amount](/docs/images/get-cluster-status-function-code.jpg)
 
@@ -46,12 +46,13 @@ You can now click the **Save** button in the upper right corner of the window to
 
 ### Environmental Variables
 
-Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code. 
+Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code.
 
 For this step, it's important to add two environment variables: `CLUSTER_IP` and `AUTH_TOKEN`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
 
-1.  `CLUSTER_IP`: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
-1.  `AUTH_TOKEN`: Enter the token created in the Generate a Rubrik API Token section.
+1.  `CLUSTER_IP`: 54.215.205.88
+1.  `PASSWORD`: Rubrik123!!
+1.  `USERNAME`: admin
 
 ![Environmental Variables for get_archived_amount](/docs/images/environmental-variables.jpg)
 
