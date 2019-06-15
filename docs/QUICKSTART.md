@@ -192,7 +192,7 @@ Let's start by building the function used to get cluster status.
 
 ## Function Creation
 
-Start by navigating to the AWS Lambda service and clicking the **Create Function** button and choosing the Author From Scratch option.
+Start by navigating to the AWS Lambda service and clicking the **Create Function** button and choosing the **Author From Scratch** option.
 
 *   Name: `get_cluster_status`
 *   Runtime: Python 2.7
@@ -251,7 +251,7 @@ You can now click the **Save** button in the upper right corner of the window to
 
 ### Environmental Variables
 
-Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code. 
+Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code.
 
 For this step, it's important to add two environment variables: `CLUSTER_IP` and `AUTH_TOKEN`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
 
@@ -467,7 +467,7 @@ All of the function, policy, role, bot, and other names used in this document.
   <tr>
    <td><code>AWSServiceRoleForLexBots</code>
    </td>
-   <td>IAM service-role 
+   <td>IAM service-role
    </td>
    <td>Used by the Lex bot
    </td>

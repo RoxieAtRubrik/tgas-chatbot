@@ -14,7 +14,7 @@ For this exercise, we're going to give our chatbot the power to get status on a 
 
 ## Function Creation
 
-Start by navigating to the AWS Lambda service and clicking the **Create Function** button and choosing the Author From Scratch option.
+Start by navigating to the AWS Lambda service and clicking the **Create Function** button and choosing the **Author From Scratch** option.
 
 *   Name: `get_data_growth_rate`
 *   Runtime: Python 2.7
