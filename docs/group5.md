@@ -36,7 +36,6 @@ There are only three sections to edit in the Lambda function page:
 
 1.  [Function Code](#function-code): This is where the Python code for getting cluster status is loaded.
 1.  [Environmental Variables](#environmental-variables): This is where the connection information for the backend Rubrik cluster is stored.
-1.  [Network](#network): This is where the VPC network is selected.
 
 ### Function Code
 
@@ -52,11 +51,7 @@ You can now click the **Save** button in the upper right corner of the window to
 
 Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code.
 
-For this step, it's important to add three environment variables: `CLUSTER_IP`, `USERNAME`, and `PASSWORD`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
-
-1.  `CLUSTER_IP`: 54.215.205.88
-1.  `PASSWORD`: Rubrik123!!
-1.  `USERNAME`: admin
+For this step, it's important to add three environment variables: `CLUSTER_IP`, `USERNAME`, and `PASSWORD`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area. Use the information in the image below.
 
 ![Environmental Variables for get_node_count](/docs/images/environmental-variables.jpg)
 
