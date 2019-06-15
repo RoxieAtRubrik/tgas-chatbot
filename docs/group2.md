@@ -1,10 +1,14 @@
 # Getting Started
 
-Open up a web browser and go to [http://bit.ly/tgas-syd](http://bit.ly/tgas-syd). Login using your group number and the password `Rubrik123!`
-
-For example, if you are in group 2 then your username is group2 and the password is `Rubrik123!`
+Open up a web browser and go to [http://bit.ly/tgas-syd](http://bit.ly/tgas-syd). Login using your group number and the password.
 
 ![login screen](/docs/images/login.jpg)
+
+Make you are in the `N. Virginia` region, as shown in this image.
+
+![region](/docs/images/region-services.jpg)
+
+You can use the search bar to look for `Lambda`.
 
 # AWS Lambda
 
