@@ -85,23 +85,19 @@ The chatbot uses Amazon Lex to come alive and answer your questions. For every q
 
 ![Roxie Architecture](/docs/images/architecture.jpg)
 
-## Bot Creation
+## Bot Selection
 
-Start by making a new custom bot for Roxie to use.
+At the top of AWS, click **Services** and search for Lex. Make sure you are in the **N. Virginia** region. A bot called `Superhero_Roxie` has been created for this exercise.
 
-*   AWS Lex > Bots > Create > Custom Bot
-    *   Bot Name: Group1
-    *   Language: English (US)
-    *   Output Voice: Salli
-    *   Session Timeout: 1 Minute
-    *   IAM Role: `AWSServiceRoleForLexBots` (_Automatically created on your behalf_)
-    *   COPPA: No
+![Select the bot](/docs/images/bot-select.jpg)
 
-You now have a new chatbot to use. That wasn't hard at all!
+Click `Superhero_Roxie`.
 
 ## Intent Creation
 
 An intent represents an action that the user wants to perform. Each intent should map to a command that you wish to see Roxie respond to.
+
+![Create intent](/docs/images/create-intent.jpg)
 
 1.  Click on the **Create Intent** button to start the workflow.
 1.  Next, select **Create Intent** in the list menu.
